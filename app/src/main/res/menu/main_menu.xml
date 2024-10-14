@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/petInfoMi"
+        android:title="Dados do Pet" />
+    <item
+        android:id="@+id/lastVetVisitMi"
+        android:title="Últuma ida ao Vet." />
+    <item
+        android:id="@+id/lastvaccinationMi"
+        android:title="Última Vacinação" />
+    <item
+        android:id="@+id/lastPetShopVisitMi"
+        android:title="Última visita ao pet shop" />
+</menu>
