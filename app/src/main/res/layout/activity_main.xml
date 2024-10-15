@@ -13,7 +13,7 @@
         android:layout_height="?android:actionBarSize"
         app:titleTextColor="@color/white"
         app:subtitleTextColor="@color/white"
-        android:background="@color/black"
+        android:background="@color/design_default_color_primary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -30,23 +30,53 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/petDataNascTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="120dp"
-        android:text="Data de nascimento do Pet: "
+        android:id="@+id/petNameTV2"
+        android:layout_width="116dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="60dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/petTipoTv"
+        android:id="@+id/petBirthDateTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="120dp"
+        android:text="Data de nascimento: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petBirthDateTv2"
+        android:layout_width="192dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="208dp"
+        android:layout_marginTop="120dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petTypeTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="188dp"
         android:text="Tipo do Pet: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petTypeTv2"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="188dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -63,12 +93,32 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/petPorteTv"
+        android:id="@+id/petColorTv2"
+        android:layout_width="221dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="244dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petSizeTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="308dp"
         android:text="Porte do Pet: "
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/petSizeTv2"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="152dp"
+        android:layout_marginTop="304dp"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -85,7 +135,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lastPetShopVisitTv"
+        android:id="@+id/lastVetVisitTv2"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="372dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lastPetshopVisitTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -96,7 +156,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/lastVacinationTv"
+        android:id="@+id/lastPetshopVisitTv2"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="436dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/lastVaccinationTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -106,6 +176,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/lastVaccinationTv2"
+        android:layout_width="112dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="500dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

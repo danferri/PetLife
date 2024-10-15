@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
         android:id="@+id/petInfoMi"
-        android:title="Dados do Pet" />
+        android:title="Dados do Pet"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/lastVetVisitMi"
-        android:title="Últuma ida ao Vet." />
+        android:title="Últuma ida ao Vet."
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/lastvaccinationMi"
-        android:title="Última Vacinação" />
+        android:title="Última Vacinação"
+        app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/lastPetShopVisitMi"
-        android:title="Última visita ao pet shop" />
+        android:title="Última visita ao pet shop"
+        app:showAsAction="ifRoom"/>
 </menu>
