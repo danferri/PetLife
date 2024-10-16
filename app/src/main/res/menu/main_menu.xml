@@ -4,18 +4,18 @@
 
     <item
         android:id="@+id/petInfoMi"
-        android:title="Dados do Pet"
-        app:showAsAction="ifRoom"/>
+        android:title="Dados do Pet"/>
+    <!--app:showAsAction="ifRoom"-->
     <item
         android:id="@+id/lastVetVisitMi"
-        android:title="Últuma ida ao Vet."
-        app:showAsAction="ifRoom"/>
+        android:title="Últuma ida ao Vet."/>
+    <!--app:showAsAction="ifRoom"-->
     <item
-        android:id="@+id/lastvaccinationMi"
-        android:title="Última Vacinação"
-        app:showAsAction="ifRoom"/>
+        android:id="@+id/lastVaccinationMi"
+        android:title="Última Vacinação"/>
+        <!--app:showAsAction="ifRoom"-->
     <item
         android:id="@+id/lastPetShopVisitMi"
-        android:title="Última visita ao pet shop"
-        app:showAsAction="ifRoom"/>
+        android:title="Última visita ao pet shop" />
+        <!--app:showAsAction="ifRoom"-->
 </menu>

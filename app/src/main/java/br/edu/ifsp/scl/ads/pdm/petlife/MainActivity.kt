@@ -1,15 +1,18 @@
 package br.edu.ifsp.scl.ads.pdm.petlife
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     private val amb: ActivityMainBinding by lazy {
@@ -51,16 +54,30 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
-        return when(item.itemId) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
             R.id.petInfoMi -> {
-                val intent = Intent(this, PetInfoActivity::class.java)
-                startActivity(intent)
+                val petData = Intent(this, PetInfoActivity::class.java)
+                startActivity(petData)
+                true
+            }
+
+            R.id.lastVetVisitMi -> {
+                val lastVetVisit = Intent(this, LastPetVetVisitActivity::class.java)
+                startActivity(lastVetVisit)
+                true
+            }
+
+            R.id.lastVaccinationMi -> {
+                val lastVaccination = Intent(this, LastVaccinationActivity::class.java)
+                startActivity(lastVaccination)
                 true
             }
 
             else -> false
         }
     }
+
+
 
 }
