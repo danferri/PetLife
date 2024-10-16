@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/petNameTV2"
+        android:id="@+id/petNameTv2"
         android:layout_width="116dp"
         android:layout_height="25dp"
         android:layout_marginStart="168dp"

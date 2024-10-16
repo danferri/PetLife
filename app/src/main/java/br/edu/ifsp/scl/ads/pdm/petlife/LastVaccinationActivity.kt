@@ -13,14 +13,24 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityLastVaccinationBinding
 
 class LastVaccinationActivity : AppCompatActivity() {
+    private val lvab: ActivityLastVaccinationBinding by lazy {
+        ActivityLastVaccinationBinding.inflate(layoutInflater)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_last_pet_vet_visit)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        setContentView(lvab.root)
+
+        setSupportActionBar(lvab.toolbarTb)
+        supportActionBar?.apply {
+            title = getString(R.string.app_name)
+            subtitle = "Última vacinação" //this@MainActivity.javaClass.simpleName
         }
+
+        val lastVaccination = intent.getStringExtra("lastVaccination")
+
+        lvab.lastVaccinationEt.setText(lastVaccination)
+
+
     }
 }

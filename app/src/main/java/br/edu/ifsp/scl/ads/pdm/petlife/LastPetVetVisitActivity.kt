@@ -24,6 +24,9 @@ class LastPetVetVisitActivity : AppCompatActivity() {
             subtitle = "Última ida ao vaterinário" //this@MainActivity.javaClass.simpleName
         }
 
+        val lastPetVetVisit = intent.getStringExtra("lastVetVisit")
+
+        lpvvab.lastVetVisitEt.setText(lastPetVetVisit)
 
     }
 }

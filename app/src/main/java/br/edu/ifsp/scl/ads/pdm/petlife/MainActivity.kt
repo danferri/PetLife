@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -33,13 +34,13 @@ class MainActivity : AppCompatActivity() {
 
         pet = Pet(
             "Anãozinho", "20/05/2011", "Doguinho", "Branco e preto", "pequeno",
-            "15/07/2024", "15/07/2024", "10/09/2024"
+            "15/07/2024", "23/07/2024", "10/09/2024"
         )
         updateUI()
     }
 
     private fun updateUI() {
-        amb.petNameTV2.text = pet.name
+        amb.petNameTv2.text = pet.name
         amb.petBirthDateTv2.text = pet.birthDate
         amb.petTypeTv2.text = pet.type
         amb.petColorTv2.text = pet.color
@@ -69,13 +70,17 @@ class MainActivity : AppCompatActivity() {
             }
 
             R.id.lastVetVisitMi -> {
-                val lastVetVisit = Intent(this, LastPetVetVisitActivity::class.java)
+                val lastVetVisit = Intent(this, LastPetVetVisitActivity::class.java).apply {
+                    putExtra("lastVetVisit", pet.lastVetVisit)
+                }
                 startActivity(lastVetVisit)
                 true
             }
 
             R.id.lastVaccinationMi -> {
-                val lastVaccination = Intent(this, LastVaccinationActivity::class.java)
+                val lastVaccination = Intent(this, LastVaccinationActivity::class.java).apply {
+                    putExtra("lastVaccination", pet.lastVaccination)
+                }
                 startActivity(lastVaccination)
                 true
             }
