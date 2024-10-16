@@ -57,7 +57,13 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.petInfoMi -> {
-                val petData = Intent(this, PetInfoActivity::class.java)
+                val petData = Intent(this, PetInfoActivity::class.java).apply {
+                    putExtra("name", pet.name)
+                    putExtra("birthDate", pet.birthDate)
+                    putExtra("type", pet.type)
+                    putExtra("color", pet.color)
+                    putExtra("size", pet.size)
+                }
                 startActivity(petData)
                 true
             }
@@ -77,7 +83,5 @@ class MainActivity : AppCompatActivity() {
             else -> false
         }
     }
-
-
 
 }
