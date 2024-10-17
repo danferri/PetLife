@@ -14,6 +14,7 @@
         app:titleTextColor="@color/white"
         app:subtitleTextColor="@color/white"
         android:background="@color/design_default_color_primary"
+        android:theme="@style/Theme.PetLife"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
