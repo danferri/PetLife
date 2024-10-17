@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.content.ContextCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.BIRTH_DATE
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.COLOR
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.NAME
@@ -20,6 +21,8 @@ class PetInfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(piab.root)
+
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
 
         setSupportActionBar(piab.toolbarTb)
         supportActionBar?.apply {

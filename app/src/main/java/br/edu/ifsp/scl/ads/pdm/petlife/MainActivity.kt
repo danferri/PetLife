@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
@@ -47,6 +48,8 @@ class MainActivity : AppCompatActivity() {
             subtitle = "Pet Dashboard" //this@MainActivity.javaClass.simpleName
         }
 
+        window.navigationBarColor = ContextCompat.getColor(this, R.color.black)
+
         pet = Pet(
             "Anãozinho", "20/05/2011", "Doguinho", "Branco e preto", "pequeno",
             "15/07/2024", "23/07/2024", "10/09/2024"
@@ -81,7 +84,7 @@ class MainActivity : AppCompatActivity() {
         lvvl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == RESULT_OK) {
                result.data?.getStringExtra(LAST_VET_VISIT)?.let {
-                   amb.lastVetVisitTv2.text = it
+                   pet.lastVetVisit = it
                }
                updateUI()
             }
@@ -90,7 +93,7 @@ class MainActivity : AppCompatActivity() {
         lvl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if(result.resultCode == RESULT_OK) {
                 result.data?.getStringExtra(LAST_VACCINATION)?.let {
-                    amb.lastVaccinationTv2.text = it
+                    pet.lastVaccination = it
                 }
                 updateUI()
             }
