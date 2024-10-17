@@ -1,18 +1,14 @@
 package br.edu.ifsp.scl.ads.pdm.petlife
 
-import android.app.Activity
+
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 
 
@@ -45,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(amb.toolbarTb)
         supportActionBar?.apply {
             title = getString(R.string.app_name)
-            subtitle = "Pet Dashboard" //this@MainActivity.javaClass.simpleName
+            subtitle = "Pet Dashboard"
         }
 
         window.navigationBarColor = ContextCompat.getColor(this, R.color.black)

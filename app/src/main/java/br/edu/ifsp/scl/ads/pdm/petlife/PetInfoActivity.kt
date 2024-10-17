@@ -3,14 +3,12 @@ package br.edu.ifsp.scl.ads.pdm.petlife
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.BIRTH_DATE
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.COLOR
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.NAME
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.SIZE
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.TYPE
-import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityPetInfoBinding
 
 class PetInfoActivity : AppCompatActivity() {
@@ -27,7 +25,7 @@ class PetInfoActivity : AppCompatActivity() {
         setSupportActionBar(piab.toolbarTb)
         supportActionBar?.apply {
             title = getString(R.string.app_name)
-            subtitle = "Dados do Pet" //this@MainActivity.javaClass.simpleName
+            subtitle = "Dados do Pet"
         }
 
         intent.getStringExtra(NAME)?.also{ parametro ->
