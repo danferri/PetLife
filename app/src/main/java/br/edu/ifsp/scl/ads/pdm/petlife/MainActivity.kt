@@ -101,14 +101,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI() {
-        amb.petNameTv2.text = pet.name
-        amb.petBirthDateTv2.text = pet.birthDate
-        amb.petTypeTv2.text = pet.type
-        amb.petColorTv2.text = pet.color
-        amb.petSizeTv2.text = pet.size
-        amb.lastVetVisitTv2.text = pet.lastVetVisit
-        amb.lastVaccinationTv2.text = pet.lastVaccination
-        amb.lastPetshopVisitTv2.text = pet.lastPetshopVist
+        amb.petNameValueTv.text = pet.name
+        amb.petBirthDateValeuTv.text = pet.birthDate
+        amb.petTypeValueTv.text = pet.type
+        amb.petColorValueTv.text = pet.color
+        amb.petSizeValueTv.text = pet.size
+        amb.lastVetVisitValueTv.text = pet.lastVetVisit
+        amb.lastVaccinationValueTv.text = pet.lastVaccination
+        amb.lastPetshopVisitValueTv.text = pet.lastPetshopVist
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
