@@ -31,7 +31,7 @@ class PetInfoActivity : AppCompatActivity() {
         piab.petBirthDateEt.setText(petBirthDate)
         piab.petTypeEt.setText(petType)
         piab.petColorEt.setText(petColor)
-        piab.petColorEt.setText(petSize)
+        piab.petSizeEt.setText(petSize)
 
     }
 
