@@ -5,7 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.BIRTH_DATE
+import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.COLOR
 import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.NAME
+import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.SIZE
+import br.edu.ifsp.scl.ads.pdm.petlife.MainActivity.Constantes.TYPE
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityPetInfoBinding
 
@@ -24,23 +27,23 @@ class PetInfoActivity : AppCompatActivity() {
             subtitle = "Dados do Pet" //this@MainActivity.javaClass.simpleName
         }
 
-        intent.getStringExtra(MainActivity.NAME)?.also{ parametro ->
+        intent.getStringExtra(NAME)?.also{ parametro ->
             piab.petNameEt.setText(parametro)
         }
 
-        intent.getStringExtra(MainActivity.BIRTH_DATE)?.also{ parametro ->
+        intent.getStringExtra(BIRTH_DATE)?.also{ parametro ->
             piab.petBirthDateEt.setText(parametro)
         }
 
-        intent.getStringExtra(MainActivity.TYPE)?.also{ parametro ->
+        intent.getStringExtra(TYPE)?.also{ parametro ->
             piab.petTypeEt.setText(parametro)
         }
 
-        intent.getStringExtra(MainActivity.COLOR)?.also{ parametro ->
+        intent.getStringExtra(COLOR)?.also{ parametro ->
             piab.petColorEt.setText(parametro)
         }
 
-        intent.getStringExtra(MainActivity.SIZE)?.also{ parametro ->
+        intent.getStringExtra(SIZE)?.also{ parametro ->
             piab.petSizeEt.setText(parametro)
         }
 
@@ -53,25 +56,21 @@ class PetInfoActivity : AppCompatActivity() {
                 piab.petBirthDateEt.text.toString().let{
                     this.putExtra(BIRTH_DATE, it)
                 }
+
+                piab.petTypeEt.text.toString().let{
+                    this.putExtra(TYPE, it)
+                }
+
+                piab.petColorEt.text.toString().let{
+                    this.putExtra(COLOR, it)
+                }
+
+                piab.petSizeEt.text.toString().let{
+                    this.putExtra(SIZE, it)
+                }
                 setResult(RESULT_OK, this)
             }
             finish()
         }
-
-
-
-//        val petName = intent.getStringExtra(MainActivity.NAME)
-//        val petBirthDate = intent.getStringExtra("birthDate")
-//        val petType = intent.getStringExtra("type")
-//        val petColor = intent.getStringExtra("color")
-//        val petSize = intent.getStringExtra("size")
-//
-//        piab.petNameEt.setText(petName)
-//        piab.petBirthDateEt.setText(petBirthDate)
-//        piab.petTypeEt.setText(petType)
-//        piab.petColorEt.setText(petColor)
-//        piab.petSizeEt.setText(petSize)
-
     }
-
 }

@@ -56,23 +56,23 @@ class MainActivity : AppCompatActivity() {
         pil = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 result.data?.getStringExtra(NAME)?.let {
-                    amb.petNameTv2.text = it
+                    pet.name = it
                 }
 
                 result.data?.getStringExtra(BIRTH_DATE)?.let {
-                    amb.petNameTv2.text = it
+                    pet.birthDate = it
                 }
 
                 result.data?.getStringExtra(TYPE)?.let {
-                    amb.petTypeTv2.text = it
+                    pet.type = it
                 }
 
                 result.data?.getStringExtra(COLOR)?.let {
-                    amb.petColorTv2.text = it
+                    pet.color = it
                 }
 
                 result.data?.getStringExtra(SIZE)?.let {
-                    amb.petSizeTv2.text = it
+                    pet.size = it
                 }
                 updateUI()
             }
