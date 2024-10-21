@@ -9,6 +9,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityLastPetshopVisitBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         const val SIZE = "SIZE"
         const val LAST_VET_VISIT = "LAST_VET_VISIT"
         const val LAST_VACCINATION = "LAST_VACCINATION"
+        const val LAST_PETSHOP_VISIT = "LAST_PETSHOP_VISIT"
     }
 
     private lateinit var pet: Pet
@@ -32,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pil: ActivityResultLauncher<Intent>
     private lateinit var lvvl: ActivityResultLauncher<Intent>
     private lateinit var lvl: ActivityResultLauncher<Intent>
+    private lateinit var lpsvl: ActivityResultLauncher<Intent>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -94,6 +97,15 @@ class MainActivity : AppCompatActivity() {
                 updateUI()
             }
         }
+
+        lpsvl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if(result.resultCode == RESULT_OK) {
+                result.data?.getStringExtra(LAST_PETSHOP_VISIT)?.let {
+                    pet.lastPetshopVist = it
+                }
+                updateUI()
+            }
+        }
     }
 
     private fun updateUI() {
@@ -139,6 +151,14 @@ class MainActivity : AppCompatActivity() {
                     putExtra(LAST_VACCINATION, pet.lastVaccination)
                 }
                 lvl.launch(lastVaccination)
+                true
+            }
+
+            R.id.lastPetshopVisitMi -> {
+                val lastPetshopVisit = Intent(this, LastPetshopVisitActivity::class.java).apply {
+                    putExtra(LAST_PETSHOP_VISIT, pet.lastPetshopVist)
+                }
+                lpsvl.launch(lastPetshopVisit)
                 true
             }
 

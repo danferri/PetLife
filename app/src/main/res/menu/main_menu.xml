@@ -14,8 +14,8 @@
         android:id="@+id/lastVaccinationMi"
         android:title="Última Vacinação"/>
         <!--app:showAsAction="ifRoom"-->
-   <!-- <item
-        android:id="@+id/lastPetShopVisitMi"
+    <item
+        android:id="@+id/lastPetshopVisitMi"
         android:title="Última visita ao pet shop" />
-        app:showAsAction="ifRoom"-->
+       <!-- app:showAsAction="ifRoom"-->
 </menu>
