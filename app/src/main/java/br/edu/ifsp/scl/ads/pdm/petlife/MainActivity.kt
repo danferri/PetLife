@@ -1,7 +1,12 @@
 package br.edu.ifsp.scl.ads.pdm.petlife
 
 
+import android.Manifest.permission.CALL_PHONE
 import android.content.Intent
+import android.content.Intent.ACTION_CALL
+import android.content.Intent.ACTION_DIAL
+import android.content.Intent.ACTION_VIEW
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -27,6 +32,8 @@ class MainActivity : AppCompatActivity() {
         const val LAST_VET_VISIT = "LAST_VET_VISIT"
         const val LAST_VACCINATION = "LAST_VACCINATION"
         const val LAST_PETSHOP_VISIT = "LAST_PETSHOP_VISIT"
+        const val TEL_VET = "TEL_VET"
+        const val SITE_VET = "SITE_VET"
     }
 
     private lateinit var pet: Pet
@@ -51,7 +58,8 @@ class MainActivity : AppCompatActivity() {
 
         pet = Pet(
             "Anãozinho", "20/05/2011", "Doguinho", "Branco e preto", "pequeno",
-            "15/07/2024", "23/07/2024", "10/09/2024"
+            "15/07/2024", "23/07/2024", "10/09/2024",
+            "tel:(16)997123-4567", "https://www.scl.ifsp.edu.br"
         )
         updateUI()
 
@@ -85,6 +93,14 @@ class MainActivity : AppCompatActivity() {
                result.data?.getStringExtra(LAST_VET_VISIT)?.let {
                    pet.lastVetVisit = it
                }
+
+               result.data?.getStringExtra(TEL_VET)?.let{
+                   pet.telVet = it
+               }
+
+               result.data?.getStringExtra(SITE_VET)?.let{
+                   pet.siteVet = it
+               }
                updateUI()
             }
         }
@@ -106,6 +122,21 @@ class MainActivity : AppCompatActivity() {
                 updateUI()
             }
         }
+
+        amb.callBt.setOnClickListener {
+            Intent(CALL_PHONE).apply {
+                amb.telVetValueTv.text.toString().let{
+                    startActivity(this)
+                }
+            }
+        }
+
+        amb.siteBt.setOnClickListener {
+            val url: Uri = Uri.parse(amb.siteVetValueTv.text.toString())
+            val navegador = Intent(ACTION_VIEW, url)
+            startActivity(navegador)
+        }
+
     }
 
     private fun updateUI() {
@@ -117,6 +148,8 @@ class MainActivity : AppCompatActivity() {
         amb.lastVetVisitValueTv.text = pet.lastVetVisit
         amb.lastVaccinationValueTv.text = pet.lastVaccination
         amb.lastPetshopVisitValueTv.text = pet.lastPetshopVist
+        amb.telVetValueTv.text = pet.telVet
+        amb.siteVetValueTv.text = pet.siteVet
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -141,6 +174,8 @@ class MainActivity : AppCompatActivity() {
             R.id.lastVetVisitMi -> {
                 val lastVetVisit = Intent(this, LastPetVetVisitActivity::class.java).apply {
                     putExtra(LAST_VET_VISIT, pet.lastVetVisit)
+                    putExtra(TEL_VET, pet.telVet)
+                    putExtra(SITE_VET, pet.siteVet)
                 }
                 lvvl.launch(lastVetVisit)
                 true
@@ -162,8 +197,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
-            else -> false
+            else -> { false }
         }
     }
-
 }

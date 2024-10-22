@@ -10,5 +10,7 @@ class Pet (
     var size: String,
     var lastVetVisit: String,
     var lastVaccination: String,
-    var lastPetshopVist: String
+    var lastPetshopVist: String,
+    var telVet: String,
+    var siteVet: String
 )

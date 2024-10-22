@@ -28,11 +28,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <EditText
+        android:id="@+id/telVetEt"
+        android:layout_width="383dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="212dp"
+        android:hint="telefone do veterinário"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/siteVetTvEt"
+        android:layout_width="383dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="280dp"
+        android:hint="site do veterinário"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/saveBt"
         android:layout_width="145dp"
         android:layout_height="47dp"
-        android:layout_marginTop="280dp"
+        android:layout_marginTop="368dp"
         android:text="Salvar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
