@@ -1,18 +1,11 @@
 package br.edu.ifsp.scl.ads.pdm.petlife.ui
 
 
-import android.Manifest.permission.CALL_PHONE
-import android.content.Intent
-import android.content.Intent.ACTION_VIEW
-import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.R
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
@@ -28,12 +21,16 @@ class MainActivity : AppCompatActivity() {
 
     // Adapter
     private val petAdapter: ArrayAdapter<String> by lazy {
+//        val petNameList: MutableList<String> = mutableListOf()
+//        petList.forEach{ pet -> petNameList.add(pet.name) }
+//        ArrayAdapter(this, android.R.layout.simple_list_item_1, petNameList)
 
+        ArrayAdapter(this, android.R.layout.simple_list_item_1, petList.run{
+            val petNameList: MutableList<String> = mutableListOf()
+            this.forEach { petNameList.add(it.name) }
+            petNameList
+        })
 
-        ArrayAdapter(this, android.R. simple_list_pet_1, petList)
-        val petNameList: MutableList<String> = mutableListOf()
-        this.forEach { petNameList.add(it.name) }
-        petNameList
     }
 
 
@@ -42,11 +39,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(amb.root)
 
         amb.toolbarIn.toolbar.let {
-            it.subtitle = getString(R.string.pet_list)
+            it.subtitle = "Pet List"
             setSupportActionBar(it)
         }
 
         fillPetList()
+
+        amb.petsLv.adapter = petAdapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(pet.petName) {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.addPeMi -> {
             true
         }
