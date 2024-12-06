@@ -13,20 +13,10 @@
         android:theme="@style/Theme.PetLife"
         tools:targetApi="31">
         <activity
-            android:name=".LastPetshopVisitActivity"
+            android:name=".ui.PetActivity"
             android:exported="false" />
         <activity
-            android:name=".PetInfoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LastVaccinationActivity"
-            android:exported="false"
-            android:theme="@style/Theme.PetLife" />
-        <activity
-            android:name=".LastPetVetVisitActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
