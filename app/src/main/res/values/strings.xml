@@ -45,4 +45,6 @@
     <string name="nome_do_pet">Nome do pet</string>
     <string name="birth_date">birth date</string>
     <string name="pet_name">Pet name</string>
+    <string name="pet_color">Pet color</string>
+    <string name="save">Save</string>
 </resources>
