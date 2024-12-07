@@ -28,18 +28,26 @@ class PetActivity : AppCompatActivity() {
         petSizeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         apb.petSizeSp.adapter = petSizeAdapter
 
+        val petTypeAdapter = ArrayAdapter<PetType>(this,android.R.layout.simple_spinner_item,
+            PetType.entries.toTypedArray()
+        )
+        petTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        apb.petTypeSp.adapter = petTypeAdapter
+
         val receivedPet = intent.getParcelableExtra<Pet>(PET)
         receivedPet?.let { pet ->
             with(apb) {
                 with(pet) {
                     petNameEt.setText(name)
                     petBirthDateEt.setText(birthDate)
-                    //petTypeSp.setText = (type)
+
+                    val typeIndex = petTypeAdapter.getPosition(type)
+                    petTypeSp.setSelection(typeIndex)
+
                     petColorEt.setText(color)
 
                     val sizeIndex = petSizeAdapter.getPosition(size)
                     petSizeSp.setSelection(sizeIndex)
-
 
                 }
             }
@@ -56,7 +64,7 @@ class PetActivity : AppCompatActivity() {
                 val newPet = Pet(
                     petNameEt.text.toString(),
                     petBirthDateEt.text.toString(),
-                    PetType.DOG,
+                    petTypeAdapter.getItem(petTypeSp.selectedItemId.toInt()) ?: PetType.DOG,//PetType.DOG,
                     petColorEt.text.toString(),
                     petSizeAdapter.getItem(petSizeSp.selectedItemId.toInt()) ?: PetSize.SMALL
 
