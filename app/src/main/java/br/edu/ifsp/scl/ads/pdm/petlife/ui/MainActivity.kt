@@ -18,6 +18,8 @@ import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.PET
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSize
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetType
 
 
 class MainActivity : AppCompatActivity() {
@@ -121,9 +123,9 @@ class MainActivity : AppCompatActivity() {
                 Pet(
                     "name $index",
                     "birthDate $index",
-                    "type $index",
+                    PetType.DOG,
                     "color $index",
-                    "size $index"
+                    PetSize.LARGE
                 )
             )
         }

@@ -40,16 +40,15 @@ class PetAdapter (
 
                 petTile = tpb.root
 
-                val newBookTileHolder = PetTileHolder(tpb.petNameTv, tpb.petTypeTv)
+                val newPetTileHolder = PetTileHolder(tpb.petNameTv, tpb.petTypeTv)
 
-                petTile.tag = newBookTileHolder
+                petTile.tag = newPetTileHolder
             }
 
             val holder = petTile?.tag as PetTileHolder
             holder.let {
                 it.petNameTv.text = pet.name
-                it.petTypeTv.text = pet.type
-
+                it.petTypeTv.text = pet.type.toString()
             }
 
             return petTile!!

@@ -4,10 +4,10 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class Pet (
+data class Pet (
     var name: String = "",
     var birthDate: String = "",
-    var type: String = "",
+    var type: PetType,
     var color: String = "",
-    var size: String = ""
+    var size: PetSize
 ): Parcelable
