@@ -67,9 +67,17 @@ class MainActivity : AppCompatActivity() {
             setSupportActionBar(it)
         }
 
-        fillPetList()
+        //fillPetList()
 
         amb.petsLv.adapter = petAdapter
+
+        amb.petsLv.setOnItemClickListener { _, _, position, _ ->
+            Intent(this, EventListActivity::class.java).apply {
+                putExtra(PET, petList[position])
+                startActivity(this)
+            }
+        }
+
         registerForContextMenu(amb.petsLv)
     }
 

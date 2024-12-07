@@ -16,42 +16,39 @@ class PetAdapter (
     context: Context,
     private val petList: MutableList<Pet>): ArrayAdapter<Pet>(context, R.layout.tile_pet, petList) {
 
-        private data class PetTileHolder(
-            val petNameTv: TextView,
-            val petTypeTv: TextView
-        )
+    private data class PetTileHolder(
+        val petNameTv: TextView,
+        val petTypeTv: TextView
+    )
 
-        // pegar o livro que vai ser usado para preencher a celula
-        override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-            lateinit var tpb: TilePetBinding
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        lateinit var tpb: TilePetBinding
 
-            val pet = petList[position]
+        val pet = petList[position]
 
-            //verificando se a celula foi inflada ou não, se nãp foi, infla uma nova celula
-            var petTile = convertView
-            if(petTile == null) {
-                //se não foi, infla
+        var petTile = convertView
+        if(petTile == null) {
 
-                tpb = TilePetBinding.inflate(
-                    context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater,
-                    parent,
-                    false
-                )
+            tpb = TilePetBinding.inflate(
+                context.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater,
+                parent,
+                false
+            )
 
-                petTile = tpb.root
+            petTile = tpb.root
 
-                val newPetTileHolder = PetTileHolder(tpb.petNameTv, tpb.petTypeTv)
+            val newPetTileHolder = PetTileHolder(tpb.petNameTv, tpb.petTypeTv)
 
-                petTile.tag = newPetTileHolder
-            }
-
-            val holder = petTile?.tag as PetTileHolder
-            holder.let {
-                it.petNameTv.text = pet.name
-                it.petTypeTv.text = pet.type.toString()
-            }
-
-            return petTile!!
+            petTile.tag = newPetTileHolder
         }
+
+        val holder = petTile?.tag as PetTileHolder
+        holder.let {
+            it.petNameTv.text = pet.name
+            it.petTypeTv.text = pet.type.toString()
+        }
+
+        return petTile!!
+    }
 
 }

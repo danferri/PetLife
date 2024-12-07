@@ -64,7 +64,7 @@ class PetActivity : AppCompatActivity() {
                 val newPet = Pet(
                     petNameEt.text.toString(),
                     petBirthDateEt.text.toString(),
-                    petTypeAdapter.getItem(petTypeSp.selectedItemId.toInt()) ?: PetType.DOG,//PetType.DOG,
+                    petTypeAdapter.getItem(petTypeSp.selectedItemId.toInt()) ?: PetType.DOG,
                     petColorEt.text.toString(),
                     petSizeAdapter.getItem(petSizeSp.selectedItemId.toInt()) ?: PetSize.SMALL
 
