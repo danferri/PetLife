@@ -78,6 +78,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean = when(item.itemId) {
         R.id.addPeMi -> {
+            parl.launch(Intent(this, PetActivity::class.java))
             true
         }
 
