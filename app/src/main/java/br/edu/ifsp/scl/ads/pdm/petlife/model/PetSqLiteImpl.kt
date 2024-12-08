@@ -13,8 +13,8 @@ class PetSqLiteImpl(context: Context): PetDao {
 
     companion object {
         private const val PET_DATABASE_FILE = "pet"
-        private const val PET_TABLE = "pet"
-        private const val NAME_COLUMN = "name"
+        const val PET_TABLE = "pet"
+        const val NAME_COLUMN = "name"
         private const val BIRTH_DATE_COLUMN = "birthDate"
         private const val TYPE_COLUMN = "type"
         private const val COLOR_COLUMN = "color"
@@ -101,7 +101,7 @@ class PetSqLiteImpl(context: Context): PetDao {
             getString(getColumnIndexOrThrow(BIRTH_DATE_COLUMN)),
             PetType.fromString(getString(getColumnIndexOrThrow(TYPE_COLUMN))),
             getString(getColumnIndexOrThrow(COLOR_COLUMN)),
-            PetSize.fromInt(getInt(getColumnIndexOrThrow(SIZE_COLUMN)))
+            PetSize.fromString(getString(getColumnIndexOrThrow(SIZE_COLUMN)))
         )
     }
 
