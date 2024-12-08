@@ -3,6 +3,7 @@ package br.edu.ifsp.scl.ads.pdm.petlife.ui
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
@@ -15,6 +16,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.R
+import br.edu.ifsp.scl.ads.pdm.petlife.controller.EventController
+import br.edu.ifsp.scl.ads.pdm.petlife.controller.MainController
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityEventListBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.EVENT
@@ -35,6 +38,11 @@ class EventListActivity : AppCompatActivity() {
     // Adapter
     private val eventAdapter: EventAdapter by lazy {
         EventAdapter(this, eventList)
+    }
+
+    // controller
+    private val eventController: EventController by lazy {
+        EventController(this)
     }
 
     private lateinit var earl: ActivityResultLauncher<Intent>
@@ -59,12 +67,15 @@ class EventListActivity : AppCompatActivity() {
                 }
                 event?.let { receivedEvent ->
                     receivedEvent.petName = receivedPet.name
-                    val position = eventList.indexOfFirst { it.petEvent == receivedEvent.petEvent }
+                    val position = eventList.indexOfFirst { it.id == receivedEvent.id }
                     if (position == -1) {
+                        val eventId = eventController.insertEvent(receivedEvent)
+                        receivedEvent.id = eventId.toInt()
                         eventList.add(receivedEvent)
                     }
                     else {
                         eventList[position] = receivedEvent
+                        eventController.modifyEvent(receivedEvent)
                     }
                     eventAdapter.notifyDataSetChanged()
                 }
@@ -134,7 +145,10 @@ class EventListActivity : AppCompatActivity() {
                 }
                 true
             }
-            R.id.removePetMi -> {
+            R.id.removeEventMi -> {
+                eventList[position].id?.let {
+                    eventController.removeEvent(it)
+                }
                 eventList.removeAt(position)
                 eventAdapter.notifyDataSetChanged()
                 true

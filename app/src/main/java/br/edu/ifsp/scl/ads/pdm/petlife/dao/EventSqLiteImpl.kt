@@ -76,7 +76,7 @@ class EventSqLiteImpl(context: Context): EventDao {
     override fun retrieveEventsFromPet(petName: String): MutableList<Event> {
         val eventList = mutableListOf<Event>()
 
-        val cursor = eventDatabase.rawQuery("SELECT * FROM $EVENT_TABLE WHERE $PET_NAME_COLUMN", null)
+        val cursor = eventDatabase.rawQuery("SELECT * FROM $EVENT_TABLE WHERE $PET_NAME_COLUMN = ?", arrayOf(petName))
         while (cursor.moveToNext()) {
             eventList.add(cursorToEvent(cursor))
         }
