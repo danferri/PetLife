@@ -1,6 +1,7 @@
 package br.edu.ifsp.scl.ads.pdm.petlife.ui
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.Menu
@@ -9,11 +10,14 @@ import android.view.View
 import android.widget.AdapterView.AdapterContextMenuInfo
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import br.edu.ifsp.scl.ads.pdm.petlife.R
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityEventListBinding
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.EVENT
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.PET
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Event
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
@@ -37,6 +41,26 @@ class EventListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(aelb.root)
 
+        earl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val event = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                    result.data?.getParcelableExtra<Event>(Constant.EVENT)
+                } else {
+                    result.data?.getParcelableExtra(EVENT, Event::class.java)
+                }
+                event?.let { receivedEvent ->
+                    val position = eventList.indexOfFirst { it.petEvent == receivedEvent.petEvent }
+                    if (position == -1) {
+                        eventList.add(receivedEvent)
+                    }
+                    else {
+                        eventList[position] = receivedEvent
+                    }
+                    eventAdapter.notifyDataSetChanged()
+                }
+            }
+        }
+
 
         aelb.toolbarIn.toolbar.let {
             it.subtitle = "Event List"
@@ -44,10 +68,7 @@ class EventListActivity : AppCompatActivity() {
         }
 
         aelb.eventsLv.adapter = eventAdapter
-
-
         registerForContextMenu(aelb.eventsLv)
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -78,7 +99,7 @@ class EventListActivity : AppCompatActivity() {
         return when(item.itemId) {
             R.id.editEventMi -> {
                 Intent(this, EventActivity::class.java).apply {
-                    putExtra(PET, eventList[position])
+                    putExtra(EVENT, eventList[position])
                     earl.launch(this)
                 }
                 true

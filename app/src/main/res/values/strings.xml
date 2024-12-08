@@ -49,4 +49,5 @@
     <string name="save">Save</string>
     <string name="add_pet">Add pet</string>
     <string name="event_date">Event date</string>
+    <string name="event_description">Event description</string>
 </resources>
