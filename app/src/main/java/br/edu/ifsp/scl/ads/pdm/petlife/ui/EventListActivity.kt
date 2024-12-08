@@ -21,6 +21,8 @@ import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.EVENT
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.PET
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Event
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSize
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetType
 
 class EventListActivity : AppCompatActivity() {
     private val aelb: ActivityEventListBinding by lazy {
@@ -28,7 +30,7 @@ class EventListActivity : AppCompatActivity() {
     }
 
     // Data source
-    private val eventList: MutableList<Event> = mutableListOf()
+    private var eventList: MutableList<Event> = mutableListOf()
 
     // Adapter
     private val eventAdapter: EventAdapter by lazy {
@@ -37,9 +39,16 @@ class EventListActivity : AppCompatActivity() {
 
     private lateinit var earl: ActivityResultLauncher<Intent>
 
+    private val receivedPet: Pet by lazy {
+        intent.getParcelableExtra<Pet>(PET)?:Pet()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(aelb.root)
+
+        eventList = receivedPet.events
 
         earl = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
@@ -69,6 +78,26 @@ class EventListActivity : AppCompatActivity() {
 
         aelb.eventsLv.adapter = eventAdapter
         registerForContextMenu(aelb.eventsLv)
+    }
+
+    override fun onBackPressed() {
+        Pet(
+            receivedPet.name,
+            receivedPet.birthDate,
+            receivedPet.type,
+            receivedPet.color,
+            receivedPet.size,
+            eventList
+
+        ).let { pet ->
+            Intent().apply {
+                putExtra(Constant.PET, pet)
+                setResult(RESULT_OK, this)
+                finish()
+            }
+        }
+
+        super.onBackPressed()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

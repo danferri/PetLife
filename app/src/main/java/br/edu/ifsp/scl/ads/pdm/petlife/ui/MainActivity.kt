@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         amb.petsLv.setOnItemClickListener { _, _, position, _ ->
             Intent(this, EventListActivity::class.java).apply {
                 putExtra(PET, petList[position])
-                startActivity(this)
+                parl.launch(this)
             }
         }
 

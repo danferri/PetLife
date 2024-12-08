@@ -7,7 +7,8 @@ import kotlinx.parcelize.Parcelize
 data class Pet (
     var name: String = "",
     var birthDate: String = "",
-    var type: PetType,
+    var type: PetType = PetType.DOG,
     var color: String = "",
-    var size: PetSize
+    var size: PetSize = PetSize.SMALL,
+    var events: MutableList<Event> = mutableListOf()
 ): Parcelable
