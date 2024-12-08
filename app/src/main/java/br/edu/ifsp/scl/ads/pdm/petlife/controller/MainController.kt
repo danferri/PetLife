@@ -1,8 +1,8 @@
 package br.edu.ifsp.scl.ads.pdm.petlife.controller
 
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
-import br.edu.ifsp.scl.ads.pdm.petlife.model.PetDao
-import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSqLiteImpl
+import br.edu.ifsp.scl.ads.pdm.petlife.dao.PetDao
+import br.edu.ifsp.scl.ads.pdm.petlife.dao.PetSqLiteImpl
 import br.edu.ifsp.scl.ads.pdm.petlife.ui.MainActivity
 
 class MainController(mainActivity: MainActivity) {

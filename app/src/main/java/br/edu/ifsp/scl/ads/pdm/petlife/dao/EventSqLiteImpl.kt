@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.ads.pdm.petlife.model
+package br.edu.ifsp.scl.ads.pdm.petlife.dao
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,6 +6,7 @@ import android.content.Context.MODE_PRIVATE
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.util.Log
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Event
 
 class EventSqLiteImpl(context: Context): EventDao {
     companion object {

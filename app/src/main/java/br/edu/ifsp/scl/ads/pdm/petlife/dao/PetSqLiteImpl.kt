@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.ads.pdm.petlife.model
+package br.edu.ifsp.scl.ads.pdm.petlife.dao
 
 import android.content.ContentValues
 import android.content.Context
@@ -7,6 +7,9 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import br.edu.ifsp.scl.ads.pdm.petlife.R
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSize
+import br.edu.ifsp.scl.ads.pdm.petlife.model.PetType
 import java.sql.SQLException
 
 class PetSqLiteImpl(context: Context): PetDao {

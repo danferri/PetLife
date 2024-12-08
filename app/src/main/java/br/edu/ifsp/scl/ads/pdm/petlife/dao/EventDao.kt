@@ -1,4 +1,6 @@
-package br.edu.ifsp.scl.ads.pdm.petlife.model
+package br.edu.ifsp.scl.ads.pdm.petlife.dao
+
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Event
 
 interface EventDao {
     fun createEvent(event: Event, petName: String): Long
