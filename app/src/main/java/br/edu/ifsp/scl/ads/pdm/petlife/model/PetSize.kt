@@ -1,15 +1,14 @@
 package br.edu.ifsp.scl.ads.pdm.petlife.model
 
 
-enum class PetSize(val sizeValue: Int, val displayName: String) {
-    SMALL(1,"Small"),
-    MEDIUM(2,"Medium"),
-    LARGE(3,"Large"),
-    UNKNOWN(0, "Unknown");
+enum class PetSize(val displayName: String) {
+    SMALL("Small"),
+    MEDIUM("Medium"),
+    LARGE("Large");
 
     companion object {
-        fun fromInt(value: Int): PetSize {
-            return values().find { it.sizeValue == value }
+        fun fromString(value: String): PetSize {
+            return PetSize.values().find { it.displayName.equals(value, ignoreCase = true) }
                 ?: throw IllegalArgumentException("Invalid PetSize value: $value")
         }
     }
