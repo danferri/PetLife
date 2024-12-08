@@ -140,7 +140,7 @@ class MainActivity : AppCompatActivity() {
         Thread {
             runOnUiThread {
                 petList.clear()
-                petList.addAll(mainController.getPet())
+                petList.addAll(mainController.getPets())
                 petAdapter.notifyDataSetChanged()
             }
         }.start()

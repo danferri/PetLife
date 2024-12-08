@@ -6,9 +6,9 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Event (
-    var id: Int?,
+    var id: Int? = null,
     var petName: String = "",
-    var petEvent: PetEvent,
+    var petEvent: PetEvent = PetEvent.VET_VISIT,
     var eventDate: String = "",
     var description: String = "",
 
