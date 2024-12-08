@@ -58,6 +58,7 @@ class EventListActivity : AppCompatActivity() {
                     result.data?.getParcelableExtra(EVENT, Event::class.java)
                 }
                 event?.let { receivedEvent ->
+                    receivedEvent.petName = receivedPet.name
                     val position = eventList.indexOfFirst { it.petEvent == receivedEvent.petEvent }
                     if (position == -1) {
                         eventList.add(receivedEvent)

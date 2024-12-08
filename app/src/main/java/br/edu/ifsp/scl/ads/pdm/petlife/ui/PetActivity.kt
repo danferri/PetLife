@@ -39,6 +39,7 @@ class PetActivity : AppCompatActivity() {
             with(apb) {
                 with(pet) {
                     petNameEt.setText(name)
+                    petNameEt.isEnabled = false
                     petBirthDateEt.setText(birthDate)
 
                     val typeIndex = petTypeAdapter.getPosition(type)

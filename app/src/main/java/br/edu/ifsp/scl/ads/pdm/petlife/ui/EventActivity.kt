@@ -20,6 +20,8 @@ class EventActivity : AppCompatActivity() {
         ActivityEventBinding.inflate(layoutInflater)
     }
 
+    private var eventId: Int? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(aeb.root)
@@ -34,6 +36,7 @@ class EventActivity : AppCompatActivity() {
         receivedEvent?.let { event ->
             with(aeb) {
                 with(event) {
+                    eventId = event.id
                     val eventIndex = eventTypeAdapter.getPosition(petEvent)
                     eventTypeSp.setSelection(eventIndex)
 
@@ -51,6 +54,8 @@ class EventActivity : AppCompatActivity() {
         aeb.run{
             saveBt.setOnClickListener {
                 val newEvent = Event(
+                    eventId,
+                    "",
                     eventTypeAdapter.getItem(eventTypeSp.selectedItemId.toInt()) ?: PetEvent.VET_VISIT,
                     eventDateEt.text.toString(),
                     eventDescriptionEt.text.toString()
