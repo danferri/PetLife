@@ -14,9 +14,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import br.edu.ifsp.scl.ads.pdm.petlife.R
+import br.edu.ifsp.scl.ads.pdm.petlife.controller.MainController
 import br.edu.ifsp.scl.ads.pdm.petlife.databinding.ActivityMainBinding
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.PET
+import br.edu.ifsp.scl.ads.pdm.petlife.model.Constant.VIEW_MODE
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
 import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSize
 import br.edu.ifsp.scl.ads.pdm.petlife.model.PetType
@@ -33,6 +35,11 @@ class MainActivity : AppCompatActivity() {
     // Adapter
     private val petAdapter: PetAdapter by lazy {
         PetAdapter(this, petList)
+    }
+
+    // Controller
+    private val mainController: MainController by lazy {
+        MainController(this)
     }
 
     private lateinit var parl: ActivityResultLauncher<Intent>
@@ -53,9 +60,11 @@ class MainActivity : AppCompatActivity() {
                     val position = petList.indexOfFirst { it.name == receivedPet.name  }
                     if (position == -1) {
                         petList.add(receivedPet)
+                        mainController.insertPet(receivedPet)
                     }
                     else {
                         petList[position] = receivedPet
+                        mainController.modifyPet(receivedPet)
                     }
                     petAdapter.notifyDataSetChanged()
                 }
@@ -67,13 +76,14 @@ class MainActivity : AppCompatActivity() {
             setSupportActionBar(it)
         }
 
-        //fillPetList()
+        fillPetList()
 
         amb.petsLv.adapter = petAdapter
 
         amb.petsLv.setOnItemClickListener { _, _, position, _ ->
             Intent(this, EventListActivity::class.java).apply {
                 putExtra(PET, petList[position])
+                putExtra(VIEW_MODE, true)
                 parl.launch(this)
             }
         }
@@ -115,6 +125,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.removePetMi -> {
+                mainController.removePet(petList[position].name)
                 petList.removeAt(position)
                 petAdapter.notifyDataSetChanged()
                 true
@@ -126,16 +137,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fillPetList() {
-        for (index in 1..5) {
-            petList.add (
-                Pet(
-                    "name $index",
-                    "birthDate $index",
-                    PetType.DOG,
-                    "color $index",
-                    PetSize.LARGE
-                )
-            )
-        }
+        Thread {
+            runOnUiThread {
+                petList.clear()
+                petList.addAll(mainController.getPet())
+                petAdapter.notifyDataSetChanged()
+            }
+        }.start()
     }
 }
