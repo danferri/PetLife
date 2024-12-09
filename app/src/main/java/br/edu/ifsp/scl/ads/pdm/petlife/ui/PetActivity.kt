@@ -67,7 +67,8 @@ class PetActivity : AppCompatActivity() {
                     petBirthDateEt.text.toString(),
                     petTypeAdapter.getItem(petTypeSp.selectedItemId.toInt()) ?: PetType.DOG,
                     petColorEt.text.toString(),
-                    petSizeAdapter.getItem(petSizeSp.selectedItemId.toInt()) ?: PetSize.SMALL
+                    petSizeAdapter.getItem(petSizeSp.selectedItemId.toInt()) ?: PetSize.SMALL,
+                    receivedPet?.events?: mutableListOf()
 
                 ).let { pet ->
                     Intent().apply {
