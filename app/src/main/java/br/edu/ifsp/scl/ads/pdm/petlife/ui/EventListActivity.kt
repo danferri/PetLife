@@ -9,6 +9,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView.AdapterContextMenuInfo
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -26,6 +27,7 @@ import br.edu.ifsp.scl.ads.pdm.petlife.model.Event
 import br.edu.ifsp.scl.ads.pdm.petlife.model.Pet
 import br.edu.ifsp.scl.ads.pdm.petlife.model.PetSize
 import br.edu.ifsp.scl.ads.pdm.petlife.model.PetType
+
 
 class EventListActivity : AppCompatActivity() {
     private val aelb: ActivityEventListBinding by lazy {
@@ -82,7 +84,6 @@ class EventListActivity : AppCompatActivity() {
             }
         }
 
-
         aelb.toolbarIn.toolbar.let {
             it.subtitle = "Event List"
             setSupportActionBar(it)
@@ -90,26 +91,25 @@ class EventListActivity : AppCompatActivity() {
 
         aelb.eventsLv.adapter = eventAdapter
         registerForContextMenu(aelb.eventsLv)
-    }
 
-    override fun onBackPressed() {
-        Pet(
-            receivedPet.name,
-            receivedPet.birthDate,
-            receivedPet.type,
-            receivedPet.color,
-            receivedPet.size,
-            eventList
-
-        ).let { pet ->
-            Intent().apply {
-                putExtra(Constant.PET, pet)
-                setResult(RESULT_OK, this)
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                Pet(
+                    receivedPet.name,
+                    receivedPet.birthDate,
+                    receivedPet.type,
+                    receivedPet.color,
+                    receivedPet.size,
+                    eventList
+                ).let { pet ->
+                    Intent().apply {
+                        putExtra(Constant.PET, pet)
+                        setResult(RESULT_OK, this)
+                    }
+                }
                 finish()
             }
-        }
-
-        super.onBackPressed()
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
