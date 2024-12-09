@@ -125,7 +125,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.removePetMi -> {
-                mainController.removePet(petList[position].name)
+                mainController.removePet(petList[position])
                 petList.removeAt(position)
                 petAdapter.notifyDataSetChanged()
                 true

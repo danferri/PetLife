@@ -26,7 +26,15 @@ class MainController(mainActivity: MainActivity) {
     }
 
     fun modifyPet(pet: Pet) = petDao.updatePet(pet)
-    fun removePet(name: String) = petDao.deletePet(name)
 
+    fun removePet(pet: Pet) {
+        petDao.deletePet(pet.name)
+
+        pet.events.forEach { event ->
+            event.id?.let {
+                eventDao.deleteEvent(it)
+            }
+        }
+    }
 
 }
