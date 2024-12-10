@@ -2,6 +2,7 @@ package br.edu.ifsp.scl.ads.pdm.petlife.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -39,9 +40,9 @@ class EventActivity : AppCompatActivity() {
                     eventId = event.id
                     val eventIndex = eventTypeAdapter.getPosition(petEvent)
                     eventTypeSp.setSelection(eventIndex)
-
                     eventDateEt.setText(eventDate)
                     eventDescriptionEt.setText(description)
+                    eventTimeMedicineEt.setText(time)
                 }
             }
         }
@@ -58,7 +59,8 @@ class EventActivity : AppCompatActivity() {
                     "",
                     eventTypeAdapter.getItem(eventTypeSp.selectedItemId.toInt()) ?: PetEvent.VET_VISIT,
                     eventDateEt.text.toString(),
-                    eventDescriptionEt.text.toString()
+                    eventDescriptionEt.text.toString(),
+                    eventTimeMedicineEt.text.toString()
                 ).let { event ->
                     Intent().apply {
                         putExtra(Constant.EVENT, event)

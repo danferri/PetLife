@@ -11,5 +11,6 @@ data class Event (
     var petEvent: PetEvent = PetEvent.VET_VISIT,
     var eventDate: String = "",
     var description: String = "",
+    var time: String = "",
 
 ):Parcelable

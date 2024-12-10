@@ -18,6 +18,7 @@ class EventSqLiteImpl(context: Context): EventDao {
         private const val PET_EVENT_COLUMN = "pet_event"
         private const val EVENT_DATE_COLUMN = "event_date"
         private const val DESCRIPTION_COLUMN = "description"
+        private const val TIME_COLUMN = "time"
         private const val PET_NAME_COLUMN = "pet_name"
 
         private const val CREATE_EVENT_TABLE_STATEMENT = "CREATE TABLE IF NOT EXISTS $EVENT_TABLE (" +
@@ -25,6 +26,7 @@ class EventSqLiteImpl(context: Context): EventDao {
                 "$PET_EVENT_COLUMN TEXT NOT NULL, " +
                 "$EVENT_DATE_COLUMN TEXT NOT NULL, " +
                 "$DESCRIPTION_COLUMN TEXT NOT NULL, " +
+                "$TIME_COLUMN TEXT NOT NULL, " +
                 "$PET_NAME_COLUMN TEXT NOT NULL, " +
                 "FOREIGN KEY ($PET_NAME_COLUMN) REFERENCES ${PetSqLiteImpl.PET_TABLE}(${PetSqLiteImpl.NAME_COLUMN}));"
 
@@ -102,6 +104,7 @@ class EventSqLiteImpl(context: Context): EventDao {
             put(PET_EVENT_COLUMN, petEvent.toString())
             put(EVENT_DATE_COLUMN, eventDate)
             put(DESCRIPTION_COLUMN, description)
+            put(TIME_COLUMN, time)
             put(PET_NAME_COLUMN, petName)
         }
     }
@@ -112,6 +115,7 @@ class EventSqLiteImpl(context: Context): EventDao {
             getString(getColumnIndexOrThrow(PET_NAME_COLUMN)),
             PetEvent.fromString(getString(getColumnIndexOrThrow(PET_EVENT_COLUMN))),
             getString(getColumnIndexOrThrow(EVENT_DATE_COLUMN)),
+            getString(getColumnIndexOrThrow(TIME_COLUMN)),
             getString(getColumnIndexOrThrow(DESCRIPTION_COLUMN))
         )
     }
